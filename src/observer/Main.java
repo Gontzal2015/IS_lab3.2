@@ -2,7 +2,6 @@ package observer;
 
 import java.util.Observable;
 
-import domain.Covid19Pacient;
 
 public class Main {
 
@@ -10,6 +9,14 @@ public class Main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Observable	pacient=new	Covid19Pacient("aitor", 35);
+		Observable pacient2=new Covid19Pacient("Jaime",48);
+		new	PacientObserverGUI	(pacient);
+		new	PacientSymptomGUI((Covid19Pacient) pacient);
+		new	PacientObserverGUI	(pacient2);
+		new	PacientSymptomGUI((Covid19Pacient) pacient2);
+		
+		
 
 	}
 

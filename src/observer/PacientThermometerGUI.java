@@ -66,4 +66,6 @@ public class PacientThermometerGUI extends Frame{
 		private static final int right = 250;
 		private static final int height = 200;
 	}
+	
+	
 }
