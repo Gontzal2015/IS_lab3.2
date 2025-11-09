@@ -11,15 +11,16 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 
-public class PacientThermometerGUI extends Frame{	
+public class PacientThermometerGUI extends Frame implements Observer{	
 	private TemperatureCanvas gauges;
 	/**
 	 * @wbp.nonvisual location=119,71
 	 */
 	private final JLabel label = new JLabel("New label");
 	
-	public PacientThermometerGUI(){ 
+	public PacientThermometerGUI(Observable o){ 
 		super("Temperature Gauge");
+		o.addObserver(this);
 		Panel Top = new Panel();
 		add("North", Top);
 		gauges = new TemperatureCanvas(0,15);
@@ -66,6 +67,17 @@ public class PacientThermometerGUI extends Frame{
 		private static final int right = 250;
 		private static final int height = 200;
 	}
+
+
+	@Override
+	public	void	update(Observable	o,	Object	args)	{		
+		Covid19Pacient	p=(Covid19Pacient)	o;	
+//			Obtain	the		current	covidImpact	to	paint	
+		int	farenheit	=	(int)	p.covidImpact();		
+//			temperature	gauge	update	
+		gauges.set(farenheit);	
+		gauges.repaint();	
+		}	
 	
 	
 }
